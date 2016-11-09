@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+">
+    <bean id = "orderDAOFileImpl" class = "daos.OrderDAOFileImpl" />
+    <bean id = "orderDAOInMem" class = "daos.OrderDAOInMem" />
+    <bean id = "orderItemDAOFileImpl" class = "daos.OrderItemDAOFileImpl" />
+    <bean id = "orderItemDAOInMem" class = "daos.OrderItemDAOInMem" />
+    <bean id = "taxDAOFileImpl" class = "daos.TaxDAOFileImpl" />
+    <bean id = "taxDAOInMem" class = "daos.TaxDAOInMem" />
+    <bean id = "itemDAOFileImpl" class = "daos.ItemDAOFileImpl" />
+    <bean id = "itemDAOInMem" class = "daos.ItemDAOInMem" />
+    
+    <bean id = "TEST" class = "controllers.FlooringController">
+        <constructor-arg ref = "orderDAOInMem" />
+        <constructor-arg ref = "orderItemDAOInMem" />
+        <constructor-arg ref = "taxDAOFileImpl" />
+        <constructor-arg ref = "itemDAOFileImpl" />
+    </bean>
+    
+    <bean id = "PROD" class = "controllers.FlooringController">
+        <constructor-arg ref = "orderDAOFileImpl" />
+        <constructor-arg ref = "orderItemDAOFileImpl" />
+        <constructor-arg ref = "taxDAOFileImpl" />
+        <constructor-arg ref = "itemDAOFileImpl" />
+    </bean>
+
+
+
+</beans>
